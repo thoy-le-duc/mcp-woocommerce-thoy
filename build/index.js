@@ -1065,7 +1065,7 @@ async function handleWooCommerceRequest(method, params) {
                 const productMetaData = getProductResponse.data.meta_data || [];
                 // If a specific key is requested, filter the meta data
                 if (params.metaKey) {
-                    return productMetaData.filter(meta => meta.key === params.metaKey);
+                    return productMetaData.filter((meta) => meta.key === params.metaKey);
                 }
                 return productMetaData;
             case 'create_product_meta':
@@ -1084,7 +1084,7 @@ async function handleWooCommerceRequest(method, params) {
                 let product = productMetaResponse.data;
                 let metaData = product.meta_data || [];
                 // Look for existing meta with the same key
-                const existingMetaIndex = metaData.findIndex(meta => meta.key === params.metaKey);
+                const existingMetaIndex = metaData.findIndex((meta) => meta.key === params.metaKey);
                 if (existingMetaIndex >= 0) {
                     // Update existing meta
                     metaData[existingMetaIndex].value = params.metaValue;
@@ -1113,7 +1113,7 @@ async function handleWooCommerceRequest(method, params) {
                 let productForDelete = getProductForDeleteResponse.data;
                 let currentMetaData = productForDelete.meta_data || [];
                 // Filter out the meta key to delete
-                const updatedMetaData = currentMetaData.filter(meta => meta.key !== params.metaKey);
+                const updatedMetaData = currentMetaData.filter((meta) => meta.key !== params.metaKey);
                 // Update the product with the filtered meta_data
                 const deleteProductMetaResponse = await client.put(`/products/${params.productId}`, {
                     meta_data: updatedMetaData
@@ -1129,7 +1129,7 @@ async function handleWooCommerceRequest(method, params) {
                 const orderMetaData = getOrderResponse.data.meta_data || [];
                 // If a specific key is requested, filter the meta data
                 if (params.metaKey) {
-                    return orderMetaData.filter(meta => meta.key === params.metaKey);
+                    return orderMetaData.filter((meta) => meta.key === params.metaKey);
                 }
                 return orderMetaData;
             case 'create_order_meta':
@@ -1148,7 +1148,7 @@ async function handleWooCommerceRequest(method, params) {
                 let order = orderMetaResponse.data;
                 let orderMeta = order.meta_data || [];
                 // Look for existing meta with the same key
-                const existingOrderMetaIndex = orderMeta.findIndex(meta => meta.key === params.metaKey);
+                const existingOrderMetaIndex = orderMeta.findIndex((meta) => meta.key === params.metaKey);
                 if (existingOrderMetaIndex >= 0) {
                     // Update existing meta
                     orderMeta[existingOrderMetaIndex].value = params.metaValue;
@@ -1177,7 +1177,7 @@ async function handleWooCommerceRequest(method, params) {
                 let orderForDelete = getOrderForDeleteResponse.data;
                 let currentOrderMeta = orderForDelete.meta_data || [];
                 // Filter out the meta key to delete
-                const updatedOrderMeta = currentOrderMeta.filter(meta => meta.key !== params.metaKey);
+                const updatedOrderMeta = currentOrderMeta.filter((meta) => meta.key !== params.metaKey);
                 // Update the order with the filtered meta_data
                 const deleteOrderMetaResponse = await client.put(`/orders/${params.orderId}`, {
                     meta_data: updatedOrderMeta
@@ -1193,7 +1193,7 @@ async function handleWooCommerceRequest(method, params) {
                 const customerMetaData = getCustomerResponse.data.meta_data || [];
                 // If a specific key is requested, filter the meta data
                 if (params.metaKey) {
-                    return customerMetaData.filter(meta => meta.key === params.metaKey);
+                    return customerMetaData.filter((meta) => meta.key === params.metaKey);
                 }
                 return customerMetaData;
             case 'create_customer_meta':
@@ -1212,7 +1212,7 @@ async function handleWooCommerceRequest(method, params) {
                 let customer = customerMetaResponse.data;
                 let customerMeta = customer.meta_data || [];
                 // Look for existing meta with the same key
-                const existingCustomerMetaIndex = customerMeta.findIndex(meta => meta.key === params.metaKey);
+                const existingCustomerMetaIndex = customerMeta.findIndex((meta) => meta.key === params.metaKey);
                 if (existingCustomerMetaIndex >= 0) {
                     // Update existing meta
                     customerMeta[existingCustomerMetaIndex].value = params.metaValue;
@@ -1241,7 +1241,7 @@ async function handleWooCommerceRequest(method, params) {
                 let customerForDelete = getCustomerForDeleteResponse.data;
                 let currentCustomerMeta = customerForDelete.meta_data || [];
                 // Filter out the meta key to delete
-                const updatedCustomerMeta = currentCustomerMeta.filter(meta => meta.key !== params.metaKey);
+                const updatedCustomerMeta = currentCustomerMeta.filter((meta) => meta.key !== params.metaKey);
                 // Update the customer with the filtered meta_data
                 const deleteCustomerMetaResponse = await client.put(`/customers/${params.customerId}`, {
                     meta_data: updatedCustomerMeta
